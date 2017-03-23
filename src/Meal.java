@@ -11,6 +11,10 @@ public class Meal {
      *
      * @return наименование блюда
      */
+    public Meal(String title, float price) {
+
+    }
+
     public String getTitle(){
         //todo
         throw new UnsupportedOperationException();
