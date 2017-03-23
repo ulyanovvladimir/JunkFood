@@ -21,14 +21,7 @@ public class Tests {
      *
      * В нашем случае показан пример создания заказа, состоящего из первого блюда списка блюд нашего меню.
      */
-    @Before
-    public void preparation(){
-        o = new Order();
-        List<Meal> menuList = new Menu().list();
-        if (!menuList.isEmpty()) {
-            o.addMeal(menuList.get(0));
-        }
-    }
+
 
     /**
      * Демонстрирует базовые возможности библиотеки тестирования JUnit.
@@ -109,8 +102,8 @@ public class Tests {
         assertEquals(price,order.totalSum());
         Order order1 = new Order();
         Float price1 = menu.list().get(1).getPrice() + menu.list().get(2).getPrice();
-        order.addMeal(menu.list().get(1));
-        order.addMeal(menu.list().get(2));
+        order1.addMeal(menu.list().get(1));
+        order1.addMeal(menu.list().get(2));
         assertEquals(price1, order1.totalSum());
     }
     //todo Test 5 на добавление нескольких блюд одного наименования

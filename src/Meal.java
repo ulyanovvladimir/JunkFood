@@ -4,6 +4,8 @@
  */
 public class Meal {
 
+    private String title;
+    private float price;
     //todo Добавьте необходимые конструктуры и/или методы, чтобы можно было создать блюдо с указанием его наименования
     //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
 
@@ -12,12 +14,12 @@ public class Meal {
      * @return наименование блюда
      */
     public Meal(String title, float price) {
-
+        this.title = title;
+        this.price = price;
     }
 
     public String getTitle(){
-        //todo
-        throw new UnsupportedOperationException();
+        return title;
     }
 
     /**
@@ -25,7 +27,15 @@ public class Meal {
      * @return Цена, число с плавающей точкой в у.е.
      */
     public Float getPrice(){
-        //todo
-        throw new UnsupportedOperationException();
+        return price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof  Meal) {
+            Meal m = (Meal) obj;
+            return m.getTitle().equals(this.getTitle());
+        }
+        else {return false;}
     }
 }

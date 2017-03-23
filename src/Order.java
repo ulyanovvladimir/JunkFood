@@ -1,8 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Заказ
  */
 public class Order {
+
+    private List<Meal> mealList;
+
+    public Order() {
+        mealList = new ArrayList<>();
+    }
     /**
      * Добавляет одно блюдо в заказ.
      *
@@ -16,11 +24,20 @@ public class Order {
         // todo В случае, если блюдо не изменю, должно кидать IllegalArgumentException
         // todo Блюдо должно быть не null.
         // todo добавляем блюдо в заказ
-        throw new UnsupportedOperationException();
+        if (Menu.containsMeal(meal)){
+            if (!(meal == null)) {
+                mealList.add(meal);
+            }
+        } else throw new IllegalArgumentException();
     }
 
     public void addMeal(Meal meal, int count){
-        throw new UnsupportedOperationException();
+        if (Menu.containsMeal(meal)){
+            if (meal != null) {
+                for (int i=0;i<count;i++){
+                    mealList.add(meal);}
+            }
+        } else throw new IllegalArgumentException();
     }
 
     //todo добавить возможность добавления нескольких порций  одного блюда, например, два чая.
@@ -35,7 +52,10 @@ public class Order {
      * @return сумму заказа в у.е., число с плавающей точкой
      */
     public Float totalSum(){
-        //todo
-        throw new UnsupportedOperationException();
+        Float sum = 0.0f;
+        for(Meal e : mealList){
+            sum+= e.getPrice();
+        }
+        return sum;
     }
 }
