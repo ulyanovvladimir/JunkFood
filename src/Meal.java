@@ -8,7 +8,6 @@ public class Meal {
     //todo Добавьте необходимые конструктуры и/или методы, чтобы можно было создать блюдо с указанием его наименования
     //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
     public void create(String s, double price) {
-        Meal meal = new Meal();
         this.price = price;
         this.name = s;
     }

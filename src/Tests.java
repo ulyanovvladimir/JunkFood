@@ -116,7 +116,6 @@ public class Tests {
     @Test
     public void test3(){
         Menu menu = new Menu();
-        assertNull(new Menu());
         menu.create();
         assertNotNull(menu.list());
         assertTrue(menu.list().size()>=10);
