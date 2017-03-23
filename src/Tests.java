@@ -1,6 +1,8 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -20,20 +22,22 @@ public class Tests {
      *
      * В нашем случае показан пример создания заказа, состоящего из первого блюда списка блюд нашего меню.
      */
-    @Before
-    public void preparation(){
-        o = new Order();
-        List<Meal> menuList = new Menu().list();
-        if (!menuList.isEmpty()) {
-            o.addMeal(menuList.get(0));
-        }
-    }
+//    @Before
+//    @Ignore
+//    public void preparation(){
+//        o = new Order();
+//        List<Meal> menuList = new Menu().list();
+//        if (!menuList.isEmpty()) {
+//            o.addMeal(menuList.get(0));
+//        }
+//    }
 
     /**
      * Демонстрирует базовые возможности библиотеки тестирования JUnit.
      * Можно задавать несколько видов тестов.
      */
     @Test
+    @Ignore
     public void testExample(){
         //Проверка на истину булевого выражения
         assertTrue("Это все знают! Да или нет?!", 2+2 == 4);
@@ -55,6 +59,7 @@ public class Tests {
      * Эмулируется ошибка. На вход заведомо подаются некорректные данные.
      */
     @Test
+    @Ignore
     public void testFail() {
         assertTrue("Это все знают! Да или нет?!", 2+2 == 5);
         assertEquals(new Integer(10), "10");
@@ -66,7 +71,7 @@ public class Tests {
     */
     @Test(expected= IllegalArgumentException.class)
     public void testNotInPrice(){
-        new Order().addMeal(new Meal());
+        new Order().addMeal(new Meal(),22);
     }
 
     //-------------------------Ваши тесты --------------------------------
@@ -77,30 +82,110 @@ public class Tests {
     //todo Проверьте чтобы можно было создать блюдо с указанием его наименования
     //todo Указать наименование при создании можно, изменить нельзя.
     //todo Возвращаемое значение должно совпадать с тем наименованием, что было указано при создании
+    @Test
+    public void test1(){
+        String someOne = "someOne";
+        double price = 1213.24;
+        Meal meal = new Meal().create(someOne,price);
+        assertEquals(someOne,meal.getTitle());
+    }
+
+
 
 
     //todo Test 2 на блюдо
     //todo Проверьте чтобы можно было создать блюдо с указанием его цены
     //todo Проверьте, что указать цену при создании можно, изменить нельзя.
     //todo Проверьте, что возвращаемое значение должно совпадать с тем, что было указано при создании
+    @Test
+    public void test2(){
+        String someOne = "someOne";
+        double price = 1213.24;
+        Meal meal = new Meal().create(someOne,price);
+        assertEquals(price,meal.getPrice());
+
+    }
 
     //todo Test 3 на создание меню
     //todo Проверьте, что можно создать объект класса Menu
     //todo Проверьте, что список не пуст.
     //todo Проверьте, что список состоит не менее чем из 10 блюд.
     //todo Проверьте, что меню не изменяется: метод list() возвращает один и тот же список объектов
+    @Test
+    public void test3(){
+        Menu menu = new Menu();
+        assertNull(new Menu());
+        menu.create();
+        assertNotNull(menu.list());
+        assertTrue(menu.list().size()>=10);
+        assertEquals(menu.list(),menu.list());
+    }
+
 
     //todo Test 3 на заказ
     //todo Проверьте, что в заказ можно добавить блюдо из меню
     //todo Проверьте, что добавить в заказ можно только блюдо из меню (иначе должно кидаться исключение IllegalArgumentException
-
+    @Test
+    public void test3_5(){
+        Menu menu = new Menu();
+        menu.create();
+        Meal meal2 = menu.list().get(1);
+        Order order = new Order();
+        order.addMeal(meal2,1);
+    }
+    @Test(expected= IllegalArgumentException.class)
+    public void test3_5_5(){
+        Meal meal1 = new Meal();
+        meal1.create("asdasd",15.18);
+        Order order = new Order();
+        order.addMeal(meal1,1);
+    }
     //todo Test 4 на цену заказа
     // todo Проверьте, что сумма пустого заказа равна 0
     // todo Проверьте, что после добавления в заказ сумма увеличилась соответственно
     // todo Проверьте, что сумма заказа считается корректно для разных тестовых наборов
+    @Test
+    public void test4(){
+        Order order = new Order();
+        double sum = (double) order.totalSum();
+        assertTrue(sum==0);
+        Menu menu = new Menu();
+        menu.create();
+        Meal meal = menu.list().get(1);
+        assertTrue(meal.getPrice() != 0);
+        order.addMeal(meal,1);
+        double sum1 = (double) order.totalSum();
+        assertTrue(sum1==sum+meal.getPrice());
+    }
 
     //todo Test 5 на добавление нескольких блюд одного наименования
     //todo Проверьте, что можно добавить в заказ несколько блюд одного наименования
     //todo Проверьте, что сумма заказа изменилась соответственно
+    @Test
+    public void test5(){
+        Menu menu = new Menu();
+        menu.create();
+        Meal meal = menu.list().get(4);
+        Order order = new Order();
+        assertTrue(meal.getPrice() !=0);
+        order.addMeal(meal,4);
+        assertTrue(order.totalSum()==4*meal.getPrice());
+
+    }
+    // В меню два одинаковых блюда с разными ценами
+    @Test
+    public void test6(){
+        Menu menu = new Menu();
+        menu.create();
+        List<Meal> list = menu.list();
+        for (int i = 0;i<list.size();i++){
+            for (int y = 0;y<list.size();y++){
+                if (i != y){
+                    assertTrue(list.get(i).equals(list.get(y)));
+                }
+            }
+        }
+
+    }
 
 }

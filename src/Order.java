@@ -11,7 +11,7 @@ public class Order {
      *
      * @param meal блюдо из меню
      */
-    public void addMeal(Meal meal){
+    public void addMeal(Meal meal,int count){
         // todo Блюдо должно быть из меню.
         // todo В случае, если блюдо не изменю, должно кидать IllegalArgumentException
         // todo Блюдо должно быть не null.

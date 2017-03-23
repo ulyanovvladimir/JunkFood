@@ -7,6 +7,11 @@ import java.util.List;
  *
  */
 public class Menu {
+    private List<Meal> menuList;
+
+    public void create(){
+        throw new UnsupportedOperationException();
+    }
 
     //todo Создайте свое меню. Должен быть хотя бы один конструктор, который создает объект класса Menu, содержащий список не менее чем из 10 блюд.
     //todo Должно быть не менее 10 блюд.
