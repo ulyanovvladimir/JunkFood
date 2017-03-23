@@ -1,5 +1,4 @@
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -7,20 +6,27 @@ import java.util.List;
  *
  */
 public class Menu {
+    static private List<Meal> menu;
 
-    //todo Создайте свое меню. Должен быть хотя бы один конструктор, который создает объект класса Menu, содержащий список не менее чем из 10 блюд.
-    //todo Должно быть не менее 10 блюд.
-    //todo Список должен быть не пуст
-    //todo Это намеки на создание тестов. Сначала тесты, потом реализация!
+    public Menu() {
+        menu = new ArrayList();
+        menu.add(new Meal("Meal0", 10.5F));
+        menu.add(new Meal("Meal1", 11F));
+        menu.add(new Meal("Meal2", 12.5F));
+        menu.add(new Meal("Meal3", 13F));
+        menu.add(new Meal("Meal4", 14F));
+        menu.add(new Meal("Meal5", 15.5F));
+        menu.add(new Meal("Meal6", 16.5F));
+        menu.add(new Meal("Meal7", 17F));
+        menu.add(new Meal("Meal8", 18.5F));
+        menu.add(new Meal("Meal9", 19.5F));
+    }
 
-    /**
-     * Возвращает список блюд в меню.
-     * Должен быть неизменяемым. @see Collections.unmodifiableList
-     * Должен возвращать одну и ту же коллекцию объектов при кажом вызове.
-     * @return список блюд в меню
-     */
     public List<Meal> list(){
-        //todo
-        return Collections.emptyList();
+        return Collections.unmodifiableList(menu);
+    }
+
+    public static boolean contains(Meal m) {
+        return menu.contains(m);
     }
 }
