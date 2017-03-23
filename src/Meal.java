@@ -7,16 +7,17 @@ public class Meal {
     private double price;
     //todo Добавьте необходимые конструктуры и/или методы, чтобы можно было создать блюдо с указанием его наименования
     //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
-    public Meal create(String s, double price){
-        throw new UnsupportedOperationException();
+    public void create(String s, double price) {
+        Meal meal = new Meal();
+        this.price = price;
+        this.name = s;
     }
     /**
      *
      * @return наименование блюда
      */
     public String getTitle(){
-        //todo
-        throw new UnsupportedOperationException();
+        return this.name;
     }
 
     /**
@@ -24,7 +25,7 @@ public class Meal {
      * @return Цена, число с плавающей точкой в у.е.
      */
     public double getPrice(){
-        throw new UnsupportedOperationException();
+        return this.price;
     }
 
     @Override

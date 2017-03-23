@@ -86,7 +86,8 @@ public class Tests {
     public void test1(){
         String someOne = "someOne";
         double price = 1213.24;
-        Meal meal = new Meal().create(someOne,price);
+        Meal meal = new Meal();
+        meal.create(someOne,price);
         assertEquals(someOne,meal.getTitle());
     }
 
@@ -101,8 +102,9 @@ public class Tests {
     public void test2(){
         String someOne = "someOne";
         double price = 1213.24;
-        Meal meal = new Meal().create(someOne,price);
-        assertEquals(price,meal.getPrice());
+        Meal meal = new Meal();
+        meal.create(someOne,price);
+        assertTrue(price==meal.getPrice());
 
     }
 
