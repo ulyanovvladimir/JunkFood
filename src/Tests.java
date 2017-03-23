@@ -182,7 +182,7 @@ public class Tests {
         for (int i = 0;i<list.size();i++){
             for (int y = 0;y<list.size();y++){
                 if (i != y){
-                    assertTrue(list.get(i).equals(list.get(y)));
+                    assertFalse(list.get(i).equals(list.get(y)));
                 }
             }
         }
