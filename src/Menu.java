@@ -1,26 +1,34 @@
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * Меню. Список блюд
- *
- */
+
 public class Menu {
+    public static List<Meal> NewMenu;
 
-    //todo Создайте свое меню. Должен быть хотя бы один конструктор, который создает объект класса Menu, содержащий список не менее чем из 10 блюд.
-    //todo Должно быть не менее 10 блюд.
-    //todo Список должен быть не пуст
-    //todo Это намеки на создание тестов. Сначала тесты, потом реализация!
-
-    /**
-     * Возвращает список блюд в меню.
-     * Должен быть неизменяемым. @see Collections.unmodifiableList
-     * Должен возвращать одну и ту же коллекцию объектов при кажом вызове.
-     * @return список блюд в меню
-     */
-    public List<Meal> list(){
-        //todo
-        return Collections.emptyList();
+    public Menu(){
+        NewMenu = new ArrayList<>();
+        NewMenu.add(new Meal("Картофель", 150F));
+        NewMenu.add(new Meal("Борщ", 100F));
+        NewMenu.add(new Meal("Солянка", 150F));
+        NewMenu.add(new Meal("Рыба", 200F));
+        NewMenu.add(new Meal("Спагетти", 300F));
+        NewMenu.add(new Meal("Пельмени", 100F));
+        NewMenu.add(new Meal("Котлета", 100F));
+        NewMenu.add(new Meal("Плов", 250F));
+        NewMenu.add(new Meal("Чай", 20F));
+        NewMenu.add(new Meal("Кофе", 50F));
+        NewMenu.add(new Meal("Сок", 35F));
     }
+
+    public List<Meal> list(){
+        return Collections.unmodifiableList(NewMenu);
+    }
+
+    public static boolean containsMeal(Meal meal){
+        return NewMenu.contains(meal);
+    }
+
 }
