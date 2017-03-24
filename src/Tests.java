@@ -63,44 +63,83 @@ public class Tests {
 
     /*
         Тест проверяет кидание исключения IllegalArgumentException в случае, если в заказ добавляется что-то не из Меню.
-    */
+
     @Test(expected= IllegalArgumentException.class)
     public void testNotInPrice(){
         new Order().addMeal(new Meal());
     }
-
+*/
     //-------------------------Ваши тесты --------------------------------
 
 
 
-    //todo Test 1 на блюдо
-    //todo Проверьте чтобы можно было создать блюдо с указанием его наименования
-    //todo Указать наименование при создании можно, изменить нельзя.
-    //todo Возвращаемое значение должно совпадать с тем наименованием, что было указано при создании
+    @Test
+    public void test1() {
+        String title = "Chicken";
+        Float price = 8.2f;
+        Meal ml = new Meal(title, price);
+        assertEquals("Ttl",title, ml.getTitle());
+    }
 
 
-    //todo Test 2 на блюдо
-    //todo Проверьте чтобы можно было создать блюдо с указанием его цены
-    //todo Проверьте, что указать цену при создании можно, изменить нельзя.
-    //todo Проверьте, что возвращаемое значение должно совпадать с тем, что было указано при создании
+    @Test
+    public void test2() {
+        String title = "Chicken";
+        Float price = 8.2f;
+        Meal ml = new Meal(title, price);
+        assertEquals("Pr",price, ml.getPrice());
+    }
 
-    //todo Test 3 на создание меню
-    //todo Проверьте, что можно создать объект класса Menu
-    //todo Проверьте, что список не пуст.
-    //todo Проверьте, что список состоит не менее чем из 10 блюд.
-    //todo Проверьте, что меню не изменяется: метод list() возвращает один и тот же список объектов
 
-    //todo Test 3 на заказ
-    //todo Проверьте, что в заказ можно добавить блюдо из меню
-    //todo Проверьте, что добавить в заказ можно только блюдо из меню (иначе должно кидаться исключение IllegalArgumentException
+    @Test
+    public void test3_m() {
+        Menu menu = new Menu();
+        assertNotNull(menu.list());
+        assertTrue(menu.list().size() >= 10);
+        assertEquals(menu.list(),menu.list());
+    }
 
-    //todo Test 4 на цену заказа
-    // todo Проверьте, что сумма пустого заказа равна 0
-    // todo Проверьте, что после добавления в заказ сумма увеличилась соответственно
-    // todo Проверьте, что сумма заказа считается корректно для разных тестовых наборов
+
+    @Test
+    public void test3_ord() {
+        Menu menu = new Menu();
+        Order o = new Order();
+        o.addMeal(menu.list().get(2));
+    }
+
+    @Test(expected= IllegalArgumentException.class)
+    public void test3_ord_illeg(){
+        Order o = new Order();
+        o.addMeal(new Meal("Chicken10",100F));
+    }
+
+
+    @Test
+    public void test4(){
+        Menu menu = new Menu();
+        Order o = new Order();
+        assertEquals(new Float(0), o.totalSum());
+        Float presentprice=o.totalSum();
+        o.addMeal(menu.list().get(2));
+        Float newPrice = presentprice+ menu.list().get(2).getPrice();
+        assertEquals(newPrice,o.totalSum());
+        o.addMeal(menu.list().get(8));
+        newPrice=newPrice+menu.list().get(8).getPrice();
+        assertEquals(newPrice, o.totalSum());
+    }
+
+
 
     //todo Test 5 на добавление нескольких блюд одного наименования
     //todo Проверьте, что можно добавить в заказ несколько блюд одного наименования
     //todo Проверьте, что сумма заказа изменилась соответственно
-
+    @Test
+    public void test5(){
+        Menu menu = new Menu();
+        Order o = new Order();
+        o.addMeal(menu.list().get(2),2);
+        o.addMeal(menu.list().get(5),3);
+        Float newPrice = menu.list().get(2).getPrice()*2+menu.list().get(5).getPrice()*3;
+        assertEquals(newPrice,o.totalSum());
+    }
 }
