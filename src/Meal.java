@@ -4,6 +4,9 @@
  */
 public class Meal {
 
+    public Meal (String name, Float cost) {
+        throw new UnsupportedOperationException();
+    }
     //todo Добавьте необходимые конструктуры и/или методы, чтобы можно было создать блюдо с указанием его наименования
     //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
 
