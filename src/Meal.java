@@ -13,14 +13,14 @@ public class Meal {
     public String getTitle(){
         return this.title;
     }
-    public void altTitle(String t) {
+    public void setTitle(String t) {
         System.out.println("You want alter "+this.title+" to "+t+".\nBut you can't alter meal title!\n");
     }
 
     public Float getPrice(){
         return this.price;
     }
-    public void altPrice(Float p) {
+    public void setPrice(Float p) {
         System.out.println("You want alter "+this.price+" to "+p+".\nBut you can't alter meal price!\n");
         throw new UnsupportedOperationException();
     }

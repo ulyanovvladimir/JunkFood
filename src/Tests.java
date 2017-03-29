@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 public class Tests {
     @Test
-    public void test1_2meal() {
+    public void test1And2ForMeal() {
         String title = "meal11";
         Float price = 10.5F;
         Meal m = new Meal(title, price);
@@ -12,16 +12,16 @@ public class Tests {
         assertEquals(price, m.getPrice());
     }
     @Test(expected = UnsupportedOperationException.class)
-    public void test1_2meal1() {
+    public void test1And2ForMealDop() {
         String title = "meal12";
         Float price = 16F;
         Meal m = new Meal(title, price);
-        m.altTitle("meeaaal");
-        m.altPrice(0F);
+        m.setTitle("meeaaal");
+        m.setPrice(0F);
     }
 
     @Test
-    public void test3menu() {
+    public void test3ForMenu() {
         Menu menu = new Menu();
         assertNotNull(menu.list());
         assertTrue(menu.list().size() >= 10);
@@ -29,19 +29,19 @@ public class Tests {
     }
 
     @Test
-    public void test3order() {
+    public void test3ForOrder() {
         Menu menu = new Menu();
         Order order = new Order();
         order.addMeal(menu.list().get(0));
     }
     @Test(expected = IllegalArgumentException.class)
-    public void test3order1() {
+    public void test3ForOrderDop() {
         Order order = new Order();
         order.addMeal(new Meal("neeew",0F));
     }
 
     @Test
-    public void test4orderprice() {
+    public void test4ForOrderPrice() {
         Menu menu = new Menu();
         Order order = new Order();
         assertEquals(new Float(0), order.totalSum());
@@ -56,7 +56,7 @@ public class Tests {
     }
 
     @Test
-    public void test5order() {
+    public void test5ForOrder() {
         Menu menu = new Menu();
         Order order = new Order();
         Meal meal = menu.list().get(0);

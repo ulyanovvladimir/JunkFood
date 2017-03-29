@@ -4,21 +4,17 @@ import java.util.*;
  * Заказ
  */
 public class Order {
-    private List<Meal> order;
-    private List<Integer> count;
+    private Map<Meal,Integer> ord;
 
     public Order() {
-        order = new ArrayList<>();
-        count = new ArrayList<>();
+        ord = new HashMap<>();
     }
 
     public void addMeal(Meal meal){
         if (Menu.contains(meal)) {
             if (meal != null) {
-                if (!order.contains(meal)) {
-                    order.add(meal);
-                    count.add(1);
-                } else count.set(order.indexOf(meal), count.get(order.indexOf(meal))+1);
+                if (!ord.containsKey(meal)) ord.put(meal,1);
+                else ord.put(meal,ord.get(meal)+1);
             }
         } else throw new IllegalArgumentException();
     }
@@ -26,17 +22,15 @@ public class Order {
     public void addMeal(Meal m, int c) {
         if (Menu.contains(m)) {
             if (m != null) {
-                if (!order.contains(m)) {
-                    order.add(m);
-                    count.add(c);
-                } else count.set(order.indexOf(m), count.get(order.indexOf(m))+c);
+                if (!ord.containsKey(m)) ord.put(m,c);
+                else ord.put(m,ord.get(m)+c);
             }
         } else throw new IllegalArgumentException();
     }
 
     public Float totalSum(){
         Float sum = 0F;
-        for (int i=0; i<order.size(); i++) sum += order.get(i).getPrice()*count.get(i);
+        for (Map.Entry<Meal, Integer> e: ord.entrySet()) sum += e.getKey().getPrice()*e.getValue();
         return sum;
     }
 }
