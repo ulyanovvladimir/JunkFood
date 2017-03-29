@@ -3,25 +3,25 @@
  * Блюдо из меню
  */
 public class Meal {
+    private final String title;
+    private Float price;
 
-    //todo Добавьте необходимые конструктуры и/или методы, чтобы можно было создать блюдо с указанием его наименования
-    //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
-
-    /**
-     *
-     * @return наименование блюда
-     */
+    public Meal(String t, Float p) {
+        this.title = t;
+        this.price = p;
+    }
     public String getTitle(){
-        //todo
-        throw new UnsupportedOperationException();
+        return this.title;
+    }
+    public void setTitle(String t) {
+        System.out.println("You want alter "+this.title+" to "+t+".\nBut you can't alter meal title!\n");
     }
 
-    /**
-     * Вовзвращает цену с плавающей точкой.
-     * @return Цена, число с плавающей точкой в у.е.
-     */
     public Float getPrice(){
-        //todo
+        return this.price;
+    }
+    public void setPrice(Float p) {
+        System.out.println("You want alter "+this.price+" to "+p+".\nBut you can't alter meal price!\n");
         throw new UnsupportedOperationException();
     }
 

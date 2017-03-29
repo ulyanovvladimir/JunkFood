@@ -1,37 +1,36 @@
+import java.util.*;
 
 /**
  * Заказ
  */
 public class Order {
-    /**
-     * Добавляет одно блюдо в заказ.
-     *
-     * todo Сначала написать тесты!
-     *
-     *
-     * @param meal блюдо из меню
-     */
-    public void addMeal(Meal meal){
-        // todo Блюдо должно быть из меню.
-        // todo В случае, если блюдо не изменю, должно кидать IllegalArgumentException
-        // todo Блюдо должно быть не null.
-        // todo добавляем блюдо в заказ
-        throw new UnsupportedOperationException();
+    private Map<Meal,Integer> ord;
+
+    public Order() {
+        ord = new HashMap<>();
     }
 
-    //todo добавить возможность добавления нескольких порций  одного блюда, например, два чая.
-    //todo чтобы можно было сделать, например, addMeal(teaMeal, 2)
-    //todo TESTS!
+    public void addMeal(Meal meal){
+        if (Menu.contains(meal)) {
+            if (meal != null) {
+                if (!ord.containsKey(meal)) ord.put(meal,1);
+                else ord.put(meal,ord.get(meal)+1);
+            }
+        } else throw new IllegalArgumentException();
+    }
 
+    public void addMeal(Meal m, int c) {
+        if (Menu.contains(m)) {
+            if (m != null) {
+                if (!ord.containsKey(m)) ord.put(m,c);
+                else ord.put(m,ord.get(m)+c);
+            }
+        } else throw new IllegalArgumentException();
+    }
 
-    /**
-     * Возвращает сумму заказа, суммирующая цены каждого блюда,
-     * умноженные на количество каждого блюда в заказе.
-     *
-     * @return сумму заказа в у.е., число с плавающей точкой
-     */
     public Float totalSum(){
-        //todo
-        throw new UnsupportedOperationException();
+        Float sum = 0F;
+        for (Map.Entry<Meal, Integer> e: ord.entrySet()) sum += e.getKey().getPrice()*e.getValue();
+        return sum;
     }
 }
