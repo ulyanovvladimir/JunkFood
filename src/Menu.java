@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Menu {
 
-    private static List<Meal> list;
+    private List<Meal> list;
     //todo Создайте свое меню. Должен быть хотя бы один конструктор, который создает объект класса Menu, содержащий список не менее чем из 10 блюд.
     //todo Должно быть не менее 10 блюд.
     //todo Список должен быть не пуст
@@ -40,7 +40,4 @@ public class Menu {
         return Collections.unmodifiableList(list);
     }
 
-    public static boolean containsMeal(Meal meal){
-        return list.contains(meal);
-    }
 }

@@ -38,4 +38,8 @@ public class Meal {
         }
         else {return false;}
     }
+
+    public int hashCode() {
+        return this.title.hashCode();
+    }
 }
