@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Заказ
@@ -11,12 +13,28 @@ public class Order {
      *
      * @param meal блюдо из меню
      */
-    public void addMeal(Meal meal){
-        // todo Блюдо должно быть из меню.
-        // todo В случае, если блюдо не изменю, должно кидать IllegalArgumentException
-        // todo Блюдо должно быть не null.
-        // todo добавляем блюдо в заказ
-        throw new UnsupportedOperationException();
+    private Map<Meal,Integer> map;
+
+    public Order() {
+        map = new HashMap<>();
+    };
+
+    public void addMeal(Meal meal,int count){
+        if (meal !=null){
+            Menu menu = new Menu();
+            if (menu.list().contains(meal)){
+                if (map.containsKey(meal)) {
+                    map.put(meal,count+map.get(meal));
+                }else{
+                    map.put(meal,count);
+                }
+            }else{
+                throw new IllegalArgumentException();
+            }
+        }else{
+            throw new IllegalArgumentException();
+        }
+
     }
 
     //todo добавить возможность добавления нескольких порций  одного блюда, например, два чая.
@@ -30,8 +48,11 @@ public class Order {
      *
      * @return сумму заказа в у.е., число с плавающей точкой
      */
-    public Float totalSum(){
-        //todo
-        throw new UnsupportedOperationException();
+    public double totalSum(){
+        double count=0;
+        for (Meal meal: map.keySet()) {
+        count+=meal.getPrice()*map.get(meal);
+        }
+        return count;
     }
 }
