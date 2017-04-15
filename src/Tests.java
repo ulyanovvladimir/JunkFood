@@ -1,8 +1,6 @@
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -71,7 +69,7 @@ public class Tests {
     */
     @Test(expected= IllegalArgumentException.class)
     public void testNotInPrice(){
-        new Order().addMeal(new Meal(),22);
+        new Order().addMeal(new Meal("car",1),22);
     }
 
     //-------------------------Ваши тесты --------------------------------
@@ -86,8 +84,7 @@ public class Tests {
     public void test1(){
         String someOne = "someOne";
         double price = 1213.24;
-        Meal meal = new Meal();
-        meal.create(someOne,price);
+        Meal meal = new Meal(someOne,price);
         assertEquals(someOne,meal.getTitle());
     }
 
@@ -102,8 +99,7 @@ public class Tests {
     public void test2(){
         String someOne = "someOne";
         double price = 1213.24;
-        Meal meal = new Meal();
-        meal.create(someOne,price);
+        Meal meal = new Meal(someOne,price);
         assertTrue(price==meal.getPrice());
 
     }
@@ -136,8 +132,7 @@ public class Tests {
     }
     @Test(expected= IllegalArgumentException.class)
     public void test3_5_5(){
-        Meal meal1 = new Meal();
-        meal1.create("asdasd",15.18);
+        Meal meal1 = new Meal("asdasd",15.18);
         Order order = new Order();
         order.addMeal(meal1,1);
     }
