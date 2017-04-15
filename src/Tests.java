@@ -168,6 +168,26 @@ public class Tests {
         assertTrue(order.totalSum()==4*meal.getPrice());
 
     }
+    //Tecт на сумму заказа несколько позиций
+    @Test
+    public void test5_5(){
+        Menu menu = new Menu();
+        menu.create();
+        Meal meal1 = menu.list().get(1);
+        assertTrue(meal1.getPrice() !=0);
+        Meal meal2 = menu.list().get(2);
+        assertTrue(meal2.getPrice() !=0);
+        Meal meal3 = menu.list().get(3);
+        assertTrue(meal3.getPrice() !=0);
+
+        Order order = new Order();
+
+        order.addMeal(meal1,4);
+        order.addMeal(meal2,4);
+        order.addMeal(meal3,4);
+        assertTrue(order.totalSum()==4*(meal1.getPrice()+meal2.getPrice()+meal3.getPrice()));
+
+    }
     // В меню два одинаковых блюда с разными ценами
     @Test
     public void test6(){

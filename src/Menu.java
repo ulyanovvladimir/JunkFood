@@ -10,22 +10,22 @@ public class Menu {
     private List<Meal> menuList;
 
     public void create(){
-        Meal meal1 = new Meal("chicken1",100.16);
+        Meal meal1 = new Meal("chicken1",10.16);
         add(meal1);
 
-        Meal meal2 = new Meal("chicken2",100.16);
+        Meal meal2 = new Meal("chicken2",150.16);
         add(meal2);
 
-        Meal meal3 = new Meal("chicken3",100.16);
+        Meal meal3 = new Meal("chicken3",160.16);
         add(meal3);
 
-        Meal meal4 = new Meal("chicken4",100.16);
+        Meal meal4 = new Meal("chicken4",170.16);
         add(meal4);
 
-        Meal meal5 = new Meal("chicken5",100.16);
+        Meal meal5 = new Meal("chicken5",180.16);
         add(meal5);
 
-        Meal meal6 = new Meal("chicken6",100.16);
+        Meal meal6 = new Meal("chicken6",190.16);
         add(meal6);
 
         Meal meal7 = new Meal("chicken7",100.16);
