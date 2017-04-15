@@ -22,7 +22,6 @@ public class Order {
     public void addMeal(Meal meal,int count){
         if (meal !=null){
             Menu menu = new Menu();
-            menu.create();
             if (menu.list().contains(meal)){
                 if (map.containsKey(meal)) {
                     map.put(meal,count+map.get(meal));

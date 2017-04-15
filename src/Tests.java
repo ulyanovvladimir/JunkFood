@@ -112,7 +112,6 @@ public class Tests {
     @Test
     public void test3(){
         Menu menu = new Menu();
-        menu.create();
         assertNotNull(menu.list());
         assertTrue(menu.list().size()>=10);
         assertEquals(menu.list(),menu.list());
@@ -125,7 +124,6 @@ public class Tests {
     @Test
     public void test3_5(){
         Menu menu = new Menu();
-        menu.create();
         Meal meal2 = menu.list().get(1);
         Order order = new Order();
         order.addMeal(meal2,1);
@@ -146,7 +144,6 @@ public class Tests {
         double sum = (double) order.totalSum();
         assertTrue(sum==0);
         Menu menu = new Menu();
-        menu.create();
         Meal meal = menu.list().get(1);
         assertTrue(meal.getPrice() != 0);
         order.addMeal(meal,1);
@@ -160,7 +157,6 @@ public class Tests {
     @Test
     public void test5(){
         Menu menu = new Menu();
-        menu.create();
         Meal meal = menu.list().get(4);
         Order order = new Order();
         assertTrue(meal.getPrice() !=0);
@@ -172,7 +168,6 @@ public class Tests {
     @Test
     public void test5_5(){
         Menu menu = new Menu();
-        menu.create();
         Meal meal1 = menu.list().get(1);
         assertTrue(meal1.getPrice() !=0);
         Meal meal2 = menu.list().get(2);
@@ -192,7 +187,6 @@ public class Tests {
     @Test
     public void test6(){
         Menu menu = new Menu();
-        menu.create();
         List<Meal> list = menu.list();
         for (int i = 0;i<list.size();i++){
             for (int y = 0;y<list.size();y++){

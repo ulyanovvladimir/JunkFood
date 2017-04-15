@@ -9,7 +9,8 @@ import java.util.List;
 public class Menu {
     private List<Meal> menuList;
 
-    public void create(){
+    public Menu(){
+        menuList = new ArrayList<>();
         Meal meal1 = new Meal("chicken1",10.16);
         add(meal1);
 
@@ -43,7 +44,6 @@ public class Menu {
     }
 
     private void add(Meal meal)  {
-        if (menuList != null) {
             int l = menuList.size();
             for (int i = 0; i < l; i++) {
                 if (menuList.get(i).equals(meal)) {
@@ -52,11 +52,7 @@ public class Menu {
                 }
             }
             menuList.add(l,meal);
-        }else{
-            menuList = new ArrayList<>();
-            int l = 0;
-            menuList.add(meal);
-        }
+
     }
 
     //todo Создайте свое меню. Должен быть хотя бы один конструктор, который создает объект класса Menu, содержащий список не менее чем из 10 блюд.
