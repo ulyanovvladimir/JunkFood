@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Заказ
@@ -13,22 +13,22 @@ public class Order {
      *
      * @param meal блюдо из меню
      */
-    private List<Meal> orderList;
-    private List<Integer> count;
-    private double totalcount = 0;
+    private Map<Meal,Integer> map;
+
+    public Order() {
+        map = new HashMap<>();
+    };
 
     public void addMeal(Meal meal,int count){
-        if (this.orderList == null){
-            this.orderList = new ArrayList<>();
-            this.count = new ArrayList<>();
-        }
         if (meal !=null){
             Menu menu = new Menu();
             menu.create();
             if (menu.list().contains(meal)){
-                this.orderList.add(meal);
-                this.count.add(count);
-                this.totalcount = count*meal.getPrice();
+                if (map.containsKey(meal)) {
+                    map.put(meal,count+map.get(meal));
+                }else{
+                    map.put(meal,count);
+                }
             }else{
                 throw new IllegalArgumentException();
             }
@@ -50,6 +50,10 @@ public class Order {
      * @return сумму заказа в у.е., число с плавающей точкой
      */
     public double totalSum(){
-        return this.totalcount;
+        double count=0;
+        for (Meal meal: map.keySet()) {
+        count+=meal.getPrice()*map.get(meal);
+        }
+        return count;
     }
 }
