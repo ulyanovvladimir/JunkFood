@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class Menu {
 
-
     /**
      * Возвращает список блюд в меню.
      * Должен быть неизменяемым. @see Collections.unmodifiableList

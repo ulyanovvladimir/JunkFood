@@ -16,7 +16,6 @@ public class Meal {
         return this.title;
 //        throw new UnsupportedOperationException();
     }
-
     /**
      * Вовзвращает цену с плавающей точкой.
      * @return Цена, число с плавающей точкой в у.е.
