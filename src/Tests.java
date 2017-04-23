@@ -92,7 +92,7 @@ public class Tests {
 
 
     @Test
-    public void test3_m() {
+    public void test3() {
         Menu menu = new Menu();
         assertNotNull(menu.list());
         assertTrue(menu.list().size() >= 10);
@@ -100,15 +100,17 @@ public class Tests {
     }
 
 
+//fix
     @Test
-    public void test3_ord() {
+    public void test3Order() {
         Menu menu = new Menu();
         Order o = new Order();
         o.addMeal(menu.list().get(2));
     }
 
+//fix
     @Test(expected= IllegalArgumentException.class)
-    public void test3_ord_illeg(){
+    public void test3OrderIllegal(){
         Order o = new Order();
         o.addMeal(new Meal("Chicken10",100F));
     }
