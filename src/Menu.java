@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,8 +17,9 @@ public class Menu {
      * @return список блюд в меню
      */
     static List<Meal> m;
+
     public Menu(){
-        m =new ArrayList<>();
+        m =new ArrayList();
         m.add(new Meal("Soup",4.2f));
         m.add(new Meal("Soup2",5.2f));
         m.add(new Meal("Soup3",6.6f));
@@ -30,9 +32,13 @@ public class Menu {
         m.add(new Meal("Chicken5",3.0f));
     }
 
+//fix
+    public List<Meal> list(){
+        return Collections.unmodifiableList(m);
+    }
 
-    public static List<Meal> list(){
-        return m;
+    public static boolean contains(Meal d) {
+        return m.contains(d);
     }
 
 
