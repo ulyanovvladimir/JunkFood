@@ -8,37 +8,50 @@ public class Meal {
     //todo Подумайте, что лучше подходит. Считается, что у блюда название не изменяется ;)
 
 
+    private final String title;
+    private Float price;
 
 
     public Meal(String title, Float price) {
-        throw new UnsupportedOperationException();
+        this.title = title;
+        this.price = price;
     }
 
-
     /**
-     *
      * @return наименование блюда
-     *
      */
-    public String getTitle(){
-        //todo
-        throw new UnsupportedOperationException();
+
+
+    public String getTitle() {
+        return this.title;
+        //throw new UnsupportedOperationException();
     }
 
     /**
      * Вовзвращает цену с плавающей точкой.
+     *
      * @return Цена, число с плавающей точкой в у.е.
      */
-    public Float getPrice(){
-        //todo
-        throw new UnsupportedOperationException();
+
+    public Float getPrice() {
+        return this.price;
+        //  throw new UnsupportedOperationException();
     }
+
+    public void setPrice(Float newPrice) {
+        this.price = newPrice;
+    }
+
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Meal){
+        if (obj instanceof Meal) {
             Meal m = (Meal) obj;
             return m.getTitle().equals(this.getTitle());
-        } else return false;
+        } else {
+            return false;
+        }
     }
+
+
 }
